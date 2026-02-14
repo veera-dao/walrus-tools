@@ -63,11 +63,28 @@ DISCORD_WEBHOOK_URL=<your-discord-webhook-url>
 
 # Slack Integration
 SLACK_WEBHOOK_URL=<your-slack-webhook-url>
+
+# Optional Extensions to Grafana
+# Comma separated list of URLs to GitHub plugins to install. See [grafana/entrypoint.sh](./grafana/entrypoint.sh) for details
+# GF_GITHUB_PLUGINS=
+# Extended Grafana configuration file
+# GRAFANA_ENV_FILE=.grafana.env
 ```
 
 > **Note:** If your targets (`WALRUS_NODE_TARGET`, `WALRUS_AGGREGATOR_TARGET`, `WALRUS_PUBLISHER_TARGET`) are HTTPS endpoints, make sure to include the `https://` protocol explicitly in the variable, e.g., `WALRUS_NODE_TARGET=https://node.example.com`.
 
 ---
+
+#### (Optional) Grafana Customisation
+
+```bash
+cp .grafana.env.tmp .grafana.env
+```
+
+In your `.env` file, set `GRAFANA_ENV_FILE=.grafana.env` so that Compose loads it. Then edit the `.grafana.env` file to configure additional Grafana settings.
+
+Refer to the [Grafana configuration documentation](https://grafana.com/docs/grafana/latest/setup-grafana/configure-grafana/#override-configuration-with-environment-variables) for details.
+
 
 ### **4. Start the Services**
 
